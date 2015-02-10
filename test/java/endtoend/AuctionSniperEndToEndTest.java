@@ -1,9 +1,10 @@
 package endtoend;
 
-import static org.junit.Assert.*;
-
+// import static org.junit.Assert.*
 import org.junit.After;
 import org.junit.Test;
+
+import auctionsniper.ApplicationRunner;
 
 /**
  * End-to-end test example of Auction Sniper
