@@ -16,7 +16,4 @@ For studying "Growing Object-Oriented Software"
 
 ### Openfire
 - [Official site](http://www.igniterealtime.org/projects/openfire/index.jsp)
-- You can get version 3.6 from [here](http://www.igniterealtime.org/downloads/download-landing.jsp?file=openfire/openfire_3_6_0.zip)
-
-
-
+- You can get version 3.6 [here!](https://community.igniterealtime.org/docs/DOC-1270)

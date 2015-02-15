@@ -10,6 +10,8 @@ import endtoend.FakeAuctionServer;
  */
 public class ApplicationRunner {
 
+    // FIXME ここで良い？
+    public static final String XMPP_HOSTNAME   = "localhost";
     public static final String SNIPER_ID       = "sniper";
     public static final String SNIPER_PASSWORD = "sniper";
     private AuctionSniperDriver driver;
