@@ -27,9 +27,10 @@ public class FakeAuctionServer {
     public  static final String XMPP_HOSTNAME    = "localhost";
     private static final String AUCTION_PASSWORD = "auction";
 
-    private final SingleMessageListener messageListener = new SingleMessageListener();
     private final String itemId;
     private final XMPPConnection connection;
+    // FIXME Why do we need to initialize this listner here, not at constructor?
+    private final SingleMessageListener messageListener = new SingleMessageListener();
     private Chat currentChat;
 
 
@@ -50,17 +51,11 @@ public class FakeAuctionServer {
 
         connection.getChatManager().addChatListener(
             new ChatManagerListener() {
-                @Override
                 public void chatCreated(Chat chat, boolean createdLocally) {
                     currentChat = chat;
                     chat.addMessageListener(messageListener);
                 }
             });
-    }
-
-
-    public String getItemId() {
-        return itemId;
     }
 
 
@@ -76,6 +71,11 @@ public class FakeAuctionServer {
 
     public void stop() {
         connection.disconnect();
+    }
+
+
+    public String getItemId() {
+        return itemId;
     }
 
 

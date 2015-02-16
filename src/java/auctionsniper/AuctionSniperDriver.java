@@ -16,7 +16,6 @@ import com.objogate.wl.swing.gesture.GesturePerformer;
  */
 public class AuctionSniperDriver extends JFrameDriver {
 
-
     public AuctionSniperDriver(int timeoutMillis) {
         super(
             new GesturePerformer(),

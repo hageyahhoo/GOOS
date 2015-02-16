@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
 /**
- * Kicker of this application.
+ * Entry point of Auction Sniper.
  * 
  * @author Hiroyuki Ito (The Hiro)
  * @see http://www.growing-object-oriented-software.com/
@@ -12,9 +12,9 @@ import javax.swing.SwingUtilities;
 public class Main {
 
     // FIXME 再チェック
-	public static final String SNIPER_STATUS_NAME = "status";
-	public static final String STATUS_JOINING     = "Joining";
-	public static final String STATUS_LOST        = "Lost";
+    public static final String SNIPER_STATUS_NAME = "status";
+    public static final String STATUS_JOINING     = "Joining";
+    public static final String STATUS_LOST        = "Lost";
     private MainWindow ui;
 
 
@@ -23,9 +23,9 @@ public class Main {
     }
 
 
-	public static void main(String... args) throws Exception {
+    public static void main(String... args) throws Exception {
         Main main = new Main();
-	}
+    }
 
 
     private void startUserInterface() throws Exception {
@@ -40,6 +40,7 @@ public class Main {
     public class MainWindow extends JFrame {
 
         public static final String MAIN_WINDOW_NAME = "MAIN_WINDOW_NAME";
+        private static final long serialVersionUID = 1;
 
         public MainWindow() {
             super("Auction Sniper");
