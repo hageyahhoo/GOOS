@@ -1,6 +1,6 @@
-package auctionsniper;
+package endtoend;
 
-import endtoend.FakeAuctionServer;
+import auctionsniper.Main;
 
 /**
  * Runner of this application.

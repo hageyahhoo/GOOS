@@ -1,6 +1,10 @@
-package auctionsniper;
+package endtoend;
 
 import static org.hamcrest.CoreMatchers.equalTo;
+
+import org.hamcrest.Matcher;
+
+import auctionsniper.Main;
 import auctionsniper.Main.MainWindow;
 
 import com.objogate.wl.swing.AWTEventQueueProber;
@@ -30,6 +34,6 @@ public class AuctionSniperDriver extends JFrameDriver {
         new JLabelDriver(
             this,
             named(Main.SNIPER_STATUS_NAME))
-            .hasText(equalTo(statusText));
+            .hasText((Matcher<String>) equalTo(statusText));
     }
 }
