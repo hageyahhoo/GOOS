@@ -33,6 +33,11 @@ public class MainWindow extends JFrame {
     }
 
 
+    public void showStatus(String status) {
+        sniperStatus.setText(status);
+    }
+
+
     private static JLabel createLabel(String initialText) {
         JLabel result = new JLabel(initialText);
         result.setName(SNIPER_STATUS_NAME);
