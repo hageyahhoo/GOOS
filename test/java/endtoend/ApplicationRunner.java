@@ -1,6 +1,7 @@
 package endtoend;
 
 import auctionsniper.Main;
+import auctionsniper.ui.MainWindow;
 
 /**
  * Runner of this application.
@@ -33,12 +34,12 @@ public class ApplicationRunner {
         thread.setDaemon(true);
         thread.start();
         driver = new AuctionSniperDriver(1000);
-        driver.showsSniperStatus(Main.STATUS_JOINING);
+        driver.showsSniperStatus(MainWindow.STATUS_JOINING);
     }
 
 
     public void showsSniperHasLostAuction() {
-        driver.showsSniperStatus(Main.STATUS_LOST);
+        driver.showsSniperStatus(MainWindow.STATUS_LOST);
     }
 
 
