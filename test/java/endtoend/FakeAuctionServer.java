@@ -1,5 +1,7 @@
 package endtoend;
 
+import static org.hamcrest.CoreMatchers.anything;
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
@@ -7,6 +9,7 @@ import static org.junit.Assert.assertThat;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
+import org.hamcrest.Matcher;
 import org.jivesoftware.smack.Chat;
 import org.jivesoftware.smack.ChatManagerListener;
 import org.jivesoftware.smack.MessageListener;
@@ -59,8 +62,22 @@ public class FakeAuctionServer {
     }
 
 
+    public void reportPrice(int price, int increment, String bidder) throws XMPPException {
+        currentChat.sendMessage(
+                String.format(
+                        "SOLVersion: 1.1; Event: PRICE; CurrentPrice: %d; Increment: %d; Bidder: %s;",
+                        price, increment, bidder));
+    }
+
+
     public void hasReceivedJoinRequestFromSniper() throws InterruptedException {
-        messageListener.receivesAMessage();
+        messageListener.receivesAMessage(is(anything()));
+    }
+
+
+    public void hasReceivedBid(int bid, String sniperId) throws InterruptedException {
+        messageListener.receivesAMessage(
+                equalTo(String.format("SOLVersion: 1.1; Command: BID; Price: %d;", bid)));
     }
 
 
@@ -86,8 +103,10 @@ public class FakeAuctionServer {
             messages.add(message);
         }
 
-        public void receivesAMessage() throws InterruptedException {
-            assertThat("Message", messages.poll(5, TimeUnit.SECONDS), is(notNullValue()));
+        public void receivesAMessage(Matcher<? super String> messageMatcher) throws InterruptedException {
+            final Message message = messages.poll(5, TimeUnit.SECONDS);
+            assertThat("Message", message, is(notNullValue()));
+            assertThat(message.getBody(), messageMatcher);
         }
     }
 }
